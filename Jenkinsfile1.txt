@@ -1,0 +1,55 @@
+pipeline{
+
+parameters {
+  string defaultValue: '1234', description: 'type the user credentials', name: 'USER', trim: true
+}
+
+agent {
+  label 'label2'
+}
+stages {
+  stage('FIRST') {
+    parallel {
+		stage('Build1') {
+  steps {
+    sh 'echo "This is Build1"'
+	}
+	}
+		stage('Deploy1') {
+		steps {
+		sh 'echo "this is deploy1"'
+		}
+  }
+  stage('Test1') {
+		steps {
+		sh 'echo "this is test1"'
+		}
+}
+
+	  }
+  }
+
+  stage('SECOND') {
+    parallel {
+      stage('Build2') {
+  steps {
+    sh 'echo "this is build2"'
+  }
+}
+	stage('Deploy2') {
+		steps {
+		sh 'echo "this is deploy2"'
+		}
+		}
+	stage('Test2') {
+		steps {
+		sh 'echo "this is test2"'
+		}
+    }
+  
+
+}
+
+}
+}
+}
