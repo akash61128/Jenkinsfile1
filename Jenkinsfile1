@@ -4,6 +4,11 @@ pipeline {
         string defaultValue: 'TEST', description: 'enter the environment ', name: 'ENV', trim: true
 		choice choices: ['Main', 'Master'], description: 'enter the branch name to execute', name: 'BRANCH'
     }
+	environment { 
+		DEPLOY_BRANCH= "$BRANCH"
+		DEPLOY_ENV= "$ENV"
+	}
+	
 
     agent {
         label 'label2'
@@ -13,7 +18,11 @@ pipeline {
             parallel {
                 stage('Build1') {
                     steps {
-                        sh 'echo "This is Build1"'
+                        sh '''
+						echo "This is Build1"
+						echo "Deploying to ${params.ENV}"
+						echo "code from ${params.BRANCH} branch"
+						'''
                     }
                 }
                 stage('Deploy1') {
