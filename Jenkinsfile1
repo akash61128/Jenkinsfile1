@@ -1,7 +1,8 @@
 pipeline {
 
     parameters {
-        string defaultValue: '1234',description: 'type the user credentials',name: 'USER',trim: true
+        string defaultValue: 'TEST', description: 'enter the environment ', name: 'ENV', trim: true
+		choice choices: ['Main', 'Master'], description: 'enter the branch name to execute', name: 'BRANCH'
     }
 
     agent {
