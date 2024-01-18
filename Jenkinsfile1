@@ -53,8 +53,8 @@ pipeline {
                     steps {
                         sh '''
 						echo "this is test2"
-						echo "this is test2"
-						echo "this is test2"
+						echo "deploying to $ENV"
+						echo "code from $BRANCH branch"
 						'''
                     }
                 }
