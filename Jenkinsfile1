@@ -51,7 +51,11 @@ pipeline {
                 }
                 stage('Test2') {
                     steps {
-                        sh 'echo "this is test2"'
+                        sh '''
+						echo "this is test2"
+						echo "this is test2"
+						echo "this is test2"
+						'''
                     }
                 }
 
