@@ -16,8 +16,8 @@ pipeline {
                 stage('Build1') {
                     steps {
 						echo "This is Build1"
-						echo "Deploying to ${params.ENV}"
-						echo "code from ${params.BRANCH} branch"
+						echo "Deploying to $ENV"
+						echo "code from $BRANCH branch"
                     }
                 }
                 stage('Deploy1') {
